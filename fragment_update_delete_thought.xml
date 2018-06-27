@@ -1,0 +1,51 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.journalapp.samuel.journalapp.UpdateDeleteThoughtFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.journalapp.samuel.journalapp.ListOfThoughtsFragment">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_view_thought_list_update_delete_title"
+            android:text="@string/msg_thought_list_update_delete_title"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textAlignment="center"/>
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_view_thought_list_update_delete_title"
+            android:layout_margin="@dimen/activity_login_margin"
+            android:id="@+id/recycle_view_thought_list_update_delete_id"/>
+
+        <ProgressBar
+            android:layout_width="@dimen/activity_pen_down_frag"
+            android:layout_height="@dimen/activity_pen_down_frag"
+            android:layout_below="@id/recycle_view_thought_list_update_delete_id"
+            android:id="@+id/progress_bar_update_delete_id"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/progress_bar_update_delete_id"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+            tools:text="@string/error_no_internet_connection"
+            android:textAlignment="center"
+            android:id="@+id/text_view_error_connection_update_delete_id"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"/>
+
+
+    </RelativeLayout>
+
+</ScrollView>
