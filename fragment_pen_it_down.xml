@@ -1,0 +1,104 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.journalapp.samuel.journalapp.PenItDownFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/activity_login_adj_margin"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-smallcaps"
+
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:id = "@+id/text_thoughts_title"
+            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+            android:text="@string/msg_thought_title"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical"
+            android:layout_below="@id/text_thoughts_title"
+            android:layout_margin="@dimen/activity_login_adj_margin">
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/activity_login_margin"
+            android:layout_marginBottom="@dimen/activity_login_margin"
+            android:layout_height="match_parent">
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="sans-serif-smallcaps"
+                android:id="@+id/edit_text_thought_title_id"
+                android:drawableLeft="@drawable/ic_title_pics"
+                android:drawableTint="@color/colorAccent"
+
+                android:hint="@string/prompt_thought_title"
+                android:inputType="text" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/activity_login_margin"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-smallcaps"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:id="@+id/edit_text_thought_descript"
+                android:drawableLeft="@drawable/ic_message_pics"
+                android:drawableTint="@color/colorAccent"
+                android:hint="@string/prompt_thought_descr"
+                android:inputType="text" />
+        </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/activity_login_margin"
+                android:layout_height="wrap_content">
+
+                <MultiAutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-smallcaps"
+                    android:layout_marginTop="@dimen/activity_horizontal_margin"
+                    android:id="@+id/edit_text_pass_login_id"
+                    android:drawableLeft="@drawable/ic_message_pics"
+                    android:drawableTint="@color/colorAccent"
+                    android:hint="@string/prompt_thought_content"
+                    android:inputType="text" />
+            </android.support.design.widget.TextInputLayout>
+
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/activity_pen_down_frag"
+                android:id="@+id/img_btn_pen_down_id"
+                android:contentDescription="@string/action_save_up"
+                android:src="@drawable/ic_message_pics"
+                android:layout_margin="@dimen/activity_login_adj_margin"
+                android:background="@color/colorPrimary"/>
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</ScrollView>
