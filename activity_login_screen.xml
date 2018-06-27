@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/ic_login_back_pics"
+    android:layout_height="match_parent">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.journalapp.samuel.journalapp.LoginScreenActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textColor="@color/colorBackLogin"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:id = "@+id/text_login_title"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:text="@string/msg_login_title"
+        />
+
+    <ImageView
+        android:layout_width="@dimen/activity_login_image_width"
+        android:layout_height="@dimen/activity_login_image_height"
+        android:layout_below="@id/text_login_title"
+        android:layout_centerHorizontal="true"
+        android:elevation="4dp"
+        android:scaleType="centerCrop"
+        android:id = "@+id/image_login_id"
+        android:src="@drawable/ic_acct_login_pics"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical"
+        android:layout_below="@id/image_login_id"
+        android:background="#ffffff"
+        android:layout_margin="@dimen/activity_login_adj_margin">
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/activity_login_margin"
+            android:layout_marginBottom="@dimen/activity_login_margin"
+            android:layout_height="match_parent">
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="sans-serif-smallcaps"
+                android:id="@+id/edit_text_email_login_id"
+                android:drawableLeft="@drawable/ic_email_pics"
+                android:drawableTint="@color/colorAccent"
+
+                android:hint="@string/prompt_email"
+                android:inputType="textEmailAddress" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/activity_login_margin"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-smallcaps"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:id="@+id/edit_text_pass_login_id"
+                android:drawableLeft="@drawable/ic_password_pics"
+                android:drawableTint="@color/colorAccent"
+                android:hint="@string/prompt_password"
+                android:inputType="textPassword" />
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_login_margin"
+            android:background="@color/colorAccent"
+            android:text="@string/action_sign_in"
+            android:id="@+id/button_sign_in_id"
+            android:fontFamily="sans-serif-smallcaps"
+            android:textStyle="bold"
+            android:textColor="@color/colorBackLogin"
+            android:textAppearance="@style/TextAppearance.AppCompat.Button"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_login_margin"
+            android:textAlignment="center"
+            android:id="@+id/sign_up_id"
+            android:textColor="@color/colorAccent"
+            android:text="@string/msg_account_not_exist_title"
+            android:fontFamily="sans-serif-smallcaps"
+            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+            />
+
+
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>
+</ScrollView>
