@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-condensed"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:id="@+id/text_view_journal_title_update_delete"
+        android:layout_margin="@dimen/activity_login_margin"
+        android:textAlignment="textStart"
+        android:layout_gravity="start"
+        tools:text ="My Buisness Plan"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:id="@+id/linear_lay_id"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_view_journal_title_update_delete"
+        android:layout_margin="@dimen/activity_login_margin"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:fontFamily="sans-serif-condensed"
+            android:layout_height="match_parent"
+            tools:text="A Buisness Plan is a "
+            android:id="@+id/text_view_journal_descrip_update_delete"
+            android:textAppearance="@style/TextAppearance.AppCompat.Caption"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:fontFamily="sans-serif-condensed"
+            tools:text="06th July 2008"
+            android:id="@+id/text_view_journal_date_update_delete"
+            android:textAppearance="@style/TextAppearance.AppCompat.Caption"/>
+
+    </LinearLayout>
+
+
+    <ImageView
+        android:layout_width="@dimen/activity_login_adj_margin"
+        android:layout_height="@dimen/activity_login_adj_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_list_margin_top"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/ic_next"/>
+
+    <MultiAutoCompleteTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/multi_auto_compl_text_view_journal_content"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:layout_below="@id/linear_lay_id"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        android:fontFamily="sans-serif-condensed"
+        android:layout_alignParentLeft="true"
+        android:layout_centerHorizontal="true"
+        tools:text="This is a dummy content..it will change at run time..please dont expect to see me"/>
+
+
+
+</RelativeLayout>
