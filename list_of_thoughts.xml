@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:id="@+id/text_view_journal_title"
+        android:layout_margin="@dimen/activity_login_margin"
+        android:textAlignment="textStart"
+        android:layout_gravity="start"
+        tools:text ="My Buisness Plan"/>
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_margin="@dimen/activity_login_margin"
+       android:orientation="horizontal">
+
+      <TextView
+          android:layout_width="0dp"
+          android:layout_weight="2"
+          android:layout_height="match_parent"
+          tools:text="A Buisness Plan is a "
+          android:id="@+id/text_view_journal_descrip"
+          android:textAppearance="@style/TextAppearance.AppCompat.Caption"/>
+
+       <TextView
+           android:layout_width="0dp"
+           android:layout_weight="1"
+           android:layout_height="match_parent"
+           tools:text="06th July 2008"
+           android:id="@+id/text_view_journal_date"
+           android:textAppearance="@style/TextAppearance.AppCompat.Caption"/>
+
+   </LinearLayout>
+
+</LinearLayout>
