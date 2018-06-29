@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.journalapp.samuel.journalapp.model_class.JournalAdapterClass;
 import com.journalapp.samuel.journalapp.model_class.JournalObjectClass;
@@ -69,16 +70,36 @@ public class ListOfThoughtsFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        journal_list = new ArrayList<>();
-        journal_list.add(new JournalObjectClass("My feelings", "my feelings are so real", "06th july 1998"));
-
+        
     }
+    
+      View v;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        try{
+             v = inflater.inflate(R.layout.fragment_list_of_thoughts, container, false);
+            journal_list = new ArrayList<>();
+            recyclerView = v.findViewById(R.id.recycle_view_thought_list_id);
+            layoutManager = new LinearLayoutManager(getContext());
+            recyclerView.setLayoutManager(layoutManager);
+            recyclerView.setHasFixedSize(true);
+        
+            journal_adapter = new JournalAdapterClass(journal_list);
+            recyclerView.setAdapter(journal_adapter);
+
+
+
+            journal_list.add(new JournalObjectClass("My feelings", "my feelings are so real", "06th july 1998","Contenrs are simple"));
+            journal_list.add(new JournalObjectClass("My feelings", "my feelings are so real", "06th july 1998", "cant say the contents now"));
+            journal_adapter.notifyDataSetChanged();
+        }catch(NullPointerException nux){
+            Toast.makeText(getContext(),getString(R.string.error_unable_pop_view) + nux.getMessage(),Toast.LENGTH_SHORT).show();
+        }
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_list_of_thoughts, container, false);
+        return v;
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
