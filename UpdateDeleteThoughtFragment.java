@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 
 /**
@@ -59,12 +60,33 @@ public class UpdateDeleteThoughtFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
+    View v;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        try{
+             v = inflater.inflate(R.layout.fragment_update_delete_thought, container, false);
+            journalObjectClassArrayList = new ArrayList<>();
+            recyclerView = v.findViewById(R.id.recycle_view_thought_list_update_delete_id);
+            layoutManager = new LinearLayoutManager(getContext());
+            recyclerView.setLayoutManager(layoutManager);
+            recyclerView.setHasFixedSize(true);
+            journalObjectClassArrayList.add(new JournalObjectClass("My feelings", "my feelings are so real", "06th july 1998","Contenrs are simple"));
+            journalAdapterUpdateClass = new JournalAdapterUpdateClass(journalObjectClassArrayList);
+            recyclerView.setAdapter(journalAdapterUpdateClass);
+
+
+
+            journalObjectClassArrayList.add(new JournalObjectClass("My feelings", "my feelings are so real", "06th july 1998","Contenrs are simple"));
+            journalObjectClassArrayList.add(new JournalObjectClass("My feelings", "my feelings are so real", "06th july 1998", "cant say the contents now"));
+            journalAdapterUpdateClass.notifyDataSetChanged();
+        }catch(NullPointerException nux){
+            Toast.makeText(getContext(),getString(R.string.error_unable_pop_view) + nux.getMessage(),Toast.LENGTH_SHORT).show();
+        }
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_update_delete_thought, container, false);
+        return v;
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
