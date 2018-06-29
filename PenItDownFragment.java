@@ -105,4 +105,43 @@ public class PenItDownFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+    
+    
+      private EditText getEditText(int id) {
+        View view = new View(getContext());
+        EditText editText = view.findViewById(id);
+        return editText;
+    }
+
+    private Button getButton(int id) {
+        View view = new View(getContext());
+        Button button = view.findViewById(id);
+        return button;
+    }
+
+    private MultiAutoCompleteTextView getMultiTextView(int id) {
+        View view = new View(getContext());
+        MultiAutoCompleteTextView multiAutoCompleteTextView = view.findViewById(id);
+        return multiAutoCompleteTextView;
+    }
+
+    boolean editStatus;
+    private void checkEmptyParam() {
+        Resources res = new Resources();
+        if (res.journal_title.equals("") && res.jornal_descrip.equals("") && res.journal_content.equals("")) {
+            Toast.makeText(getContext(), "Oops Seems You've not  not supplied any parameter yet", Toast.LENGTH_SHORT).show();
+            editStatus = false;
+        }
+    }
+
+    private class Resources {
+        String journal_title = getEditText(R.id.edit_text_thought_title_id).getText().toString().trim();
+        String jornal_descrip = getEditText(R.id.edit_text_thought_descript).getText().toString().trim();
+        String journal_content = getMultiTextView(R.id.multi_auto_complete_journal_content_id).getText().toString().trim();
+
+        public Resources(){}
+
+
+    }
+
 }
