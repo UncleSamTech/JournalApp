@@ -1,20 +1,37 @@
 package com.journalapp.samuel.journalapp;
 
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginScreenActivity extends AppCompatActivity {
-    
     Context context = LoginScreenActivity.this;
     Intent intent;
     FirebaseAuth mAuth;
     ProgressDialog progressDialog;
     private Resources resources;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_screen);
+
         mAuth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(context);
         getTextView(R.id.text_view_sign_up_id).setOnClickListener(new View.OnClickListener() {
@@ -32,9 +49,7 @@ public class LoginScreenActivity extends AppCompatActivity {
             }
         });
     }
-    
-    
-    
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -42,12 +57,12 @@ public class LoginScreenActivity extends AppCompatActivity {
     }
 
     public EditText getEditText(int id){
-        EditText editText = (EditText) findViewById(id);
+        EditText editText =  findViewById(id);
         return editText;
     }
 
     public TextView getTextView(int id){
-        TextView textView = (TextView)findViewById(id);
+        TextView textView = findViewById(id);
         return textView;
     }
 
@@ -97,4 +112,3 @@ public class LoginScreenActivity extends AppCompatActivity {
 
     }
 }
-    
