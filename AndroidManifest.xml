@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.journalapp.samuel.journalapp">
+
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_splash_screen_img"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/ic_splash_screen_img"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".JournalSplashActivity"
+            android:theme="@style/AppTheme.NoActionBar2">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".LoginScreenActivity"
+            android:label="@string/msg_label_login_screen" />
+        <activity
+            android:name=".RegistrationScreenActivity"
+            android:label="@string/msg_label_reg_screen" />
+        <activity
+            android:name=".JournalMainActivity"
+            android:label="@string/msg_label_thoughts_write"
+            android:parentActivityName=".LoginScreenActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.journalapp.samuel.journalapp.LoginScreenActivity" />
+        </activity>
+        <activity android:name=".UpdateDeleteActivity"></activity>
+    </application>
+
+</manifest>
