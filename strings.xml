@@ -1,0 +1,59 @@
+<resources>
+    <string name="app_name">JournalApp</string>
+    <string name="journal_splash_descrip">This is a product of Samuel Iwuchukwu.Inc 2018</string>
+    <string name="title_activity_login_screen">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="msg_reg_sucessful">Registration SuccessFul ! !</string>
+    <string name="prompt_password">Password</string>
+    <string name="error_empty_params">Oops ! !..No parameters supplied yet</string>
+    <string name="error_registration_failes">Oops ! !..Registration Failed ! !..Try again or contact admin</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_sign_up">Sign up</string>
+    <string name="action_save_up">Save up</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="msg_account_not_exist_title">Dont Have An Account? Sign up</string>
+    <string name="msg_account_exist_title">Already Have An Account? Sign in</string>
+    <string name="msg_login_title">Login Zone</string>
+    <string name="msg_reg_title">Registration Zone</string>
+    <string name="msg_registration_progress">Please Wait...We are Registering your data on Server</string>
+    <string name="prompt_thought_title">Give it a Title</string>
+    <string name="msg_thought_list_title">My Thoughts Archive</string>
+    <string name="msg_thought_list_update_delete_title">Update or Delete Thoughts</string>
+    <string name="prompt_thought_descr">Write a short Description</string>
+    <string name="prompt_thought_content">Pour out your hearts</string>
+    <string name="msg_thought_title">What are your thoughts? Lets document it</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="error_unable_pop_view">Unable to populate view as a result of </string>
+    <string name="error_no_internet_connection">Oops ! ! No Internet Connection Found</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="msg_label_login_screen">Login Screen</string>
+    <string name="msg_label_reg_screen">Registration Screen</string>
+    <string name="msg_label_thoughts_list_screen">My Thoughts List</string>
+    <string name="msg_label_thoughts_update_delete_screen">Update and Delete Thoughts</string>
+    <string name="msg_label_thoughts_write">Write Down Your Thoughts</string>
+    <string name="msg_label_thought_write">Pen Down</string>
+    <string name="msg_label_list_thoughts">Thought List</string>
+    <string name="error_message_null">Error as a result of : </string>
+    <string name="msg_label_modify">Modify List</string>
+    <string name="msg_signing_in_progress">Please Wait..Signing In</string>
+    <string name="msg_logged_in_user">User</string>
+    <string name="msg_saving_journal_progress">Please Wait..Saving Data</string>
+    <string name="msg_saving_journal_sucess">Journal saved to Database Successfully</string>
+    <string name="msg_login_sucess">Login Sucessful ! !</string>
+    <string name="error_msg_email_pass_not_found">Oops ! !..We cant find your details on server..Please Register</string>
+    <string name="journal_title_key">Journal Title</string>
+    <string name="journal_descr_key">Journal Description</string>
+    <string name="journal_content_key">Journal Content</string>
+    <string name="journal_date_key">Journal Date</string>
+    <string name="msg_retreive_journal_progress">Please Wait..Retreiving Journal</string>
+
+</resources>
