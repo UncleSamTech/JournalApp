@@ -1,12 +1,21 @@
 package com.journalapp.samuel.journalapp;
 
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.MultiAutoCompleteTextView;
+import android.widget.Toast;
+
+import com.journalapp.samuel.journalapp.database_class.FireBaseConnectionClass;
+import com.journalapp.samuel.journalapp.model_class.JournalObjectClass;
 
 
 /**
@@ -22,6 +31,14 @@ public class PenItDownFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    FireBaseConnectionClass fireBaseConnectionClass;
+    ProgressDialog pDialog;
+    JournalObjectClass journalObjectClass;
+    Resources resources;
+    Bundle bundle;
+    Intent intent;
+
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -57,7 +74,15 @@ public class PenItDownFragment extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+
         }
+        pDialog = new ProgressDialog(getContext());
+        getButton(R.id.img_btn_pen_down_id).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                checkEmptyParam();
+            }
+        });
     }
 
     @Override
@@ -105,21 +130,19 @@ public class PenItDownFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
-    
-    
-      private EditText getEditText(int id) {
+    private EditText getEditText(int id){
         View view = new View(getContext());
         EditText editText = view.findViewById(id);
         return editText;
     }
 
-    private Button getButton(int id) {
+    private Button getButton(int id){
         View view = new View(getContext());
         Button button = view.findViewById(id);
         return button;
     }
 
-    private MultiAutoCompleteTextView getMultiTextView(int id) {
+    private MultiAutoCompleteTextView getMultiTextView(int id){
         View view = new View(getContext());
         MultiAutoCompleteTextView multiAutoCompleteTextView = view.findViewById(id);
         return multiAutoCompleteTextView;
@@ -132,9 +155,13 @@ public class PenItDownFragment extends Fragment {
             Toast.makeText(getContext(), "Oops Seems You've not  not supplied any parameter yet", Toast.LENGTH_SHORT).show();
             editStatus = false;
         }
+        else {
+            pushToDatabase();
+        }
+
     }
 
-    private class Resources {
+    private class Resources{
         String journal_title = getEditText(R.id.edit_text_thought_title_id).getText().toString().trim();
         String jornal_descrip = getEditText(R.id.edit_text_thought_descript).getText().toString().trim();
         String journal_content = getMultiTextView(R.id.multi_auto_complete_journal_content_id).getText().toString().trim();
@@ -143,5 +170,24 @@ public class PenItDownFragment extends Fragment {
 
 
     }
+
+    private void pushToDatabase(){
+
+        pDialog.setMessage(getString(R.string.msg_saving_journal_progress));
+        pDialog.show();
+        fireBaseConnectionClass = new FireBaseConnectionClass();
+resources = new Resources();
+String key  = fireBaseConnectionClass.getRootDatabase().push().getKey();
+
+
+        journalObjectClass = new JournalObjectClass(resources.journal_title,resources.journal_content,resources.jornal_descrip,"09/06/2018");
+
+fireBaseConnectionClass.getRootDatabase().child(key).setValue(journalObjectClass);
+pDialog.dismiss();
+        
+
+    }
+
+    
 
 }
