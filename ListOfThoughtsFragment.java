@@ -1,15 +1,21 @@
 package com.journalapp.samuel.journalapp;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
+import com.journalapp.samuel.journalapp.database_class.FireBaseConnectionClass;
 import com.journalapp.samuel.journalapp.model_class.JournalAdapterClass;
 import com.journalapp.samuel.journalapp.model_class.JournalObjectClass;
 
@@ -30,13 +36,18 @@ public class ListOfThoughtsFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private RecyclerView recyclerView;
-    private ArrayList<JournalObjectClass> journal_list;
+    private ArrayList<JournalObjectClass> journal_list = new ArrayList<>();
     private JournalObjectClass journal_object_class;
     private JournalAdapterClass journal_adapter;
+    private LinearLayoutManager layoutManager;
+    FireBaseConnectionClass firebase;
+    ProgressDialog pDialog;
+    private LinearLayoutManager layoutManager;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    Bundle bundle;
 
     private OnFragmentInteractionListener mListener;
 
@@ -69,39 +80,63 @@ public class ListOfThoughtsFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+pDialog = new ProgressDialog(getContext());
 
-        
     }
-    
-      View v;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        try{
-             v = inflater.inflate(R.layout.fragment_list_of_thoughts, container, false);
-            journal_list = new ArrayList<>();
-            recyclerView = v.findViewById(R.id.recycle_view_thought_list_id);
-            layoutManager = new LinearLayoutManager(getContext());
-            recyclerView.setLayoutManager(layoutManager);
-            recyclerView.setHasFixedSize(true);
-        
-            journal_adapter = new JournalAdapterClass(journal_list);
-            recyclerView.setAdapter(journal_adapter);
-
-
-
-            journal_list.add(new JournalObjectClass("My feelings", "my feelings are so real", "06th july 1998","Contenrs are simple"));
-            journal_list.add(new JournalObjectClass("My feelings", "my feelings are so real", "06th july 1998", "cant say the contents now"));
-            journal_adapter.notifyDataSetChanged();
-        }catch(NullPointerException nux){
-            Toast.makeText(getContext(),getString(R.string.error_unable_pop_view) + nux.getMessage(),Toast.LENGTH_SHORT).show();
-        }
         // Inflate the layout for this fragment
-        return v;
 
+        View v = inflater.inflate(R.layout.fragment_list_of_thoughts, container, false);
+
+        try{
+            recyclerView = (RecyclerView)v.findViewById(R.id.recycle_view_thought_list_id);}catch(NullPointerException nux){
+            Toast.makeText(this.getActivity(),getString(R.string.error_unable_pop_view) + nux.getMessage(),Toast.LENGTH_SHORT).show();
+        }
+        layoutManager = new LinearLayoutManager(this.getActivity());
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setHasFixedSize(false);
+        journal_adapter = new JournalAdapterClass(journal_list);
+        recyclerView.setAdapter(journal_adapter);
+        journal_list.add(new JournalObjectClass("My feelings", "my feelings are so real", "06th july 1998"));
+        journal_list.add(new JournalObjectClass("My feelings", "my feelings are so real", "06th july 1998"));
+        journal_adapter.notifyDataSetChanged();
+        return v;
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        retreiveAllData();
+    }
+
+
+
+    public  void retreiveAllData(){
+        firebase = new FireBaseConnectionClass();
+        firebase.getRootDatabase().addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+pDialog.setMessage(getString(R.string.msg_retreive_journal_progress));
+pDialog.show();
+journal_list.clear();
+for(DataSnapshot ds : dataSnapshot.getChildren()){
+    journal_object_class = ds.getValue(JournalObjectClass.class);
+    journal_list.add(journal_object_class);
+
+
+}
+journal_adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
@@ -126,6 +161,8 @@ public class ListOfThoughtsFragment extends Fragment {
         mListener = null;
     }
 
+
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -140,4 +177,6 @@ public class ListOfThoughtsFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+
 }
